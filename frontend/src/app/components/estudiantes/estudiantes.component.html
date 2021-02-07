@@ -1,0 +1,58 @@
+<div class="main mt-5">
+    <div class="main__header mb-4">
+        <h1>Estudiantes</h1>
+        <button mat-raised-button color="primary" (click)="openDialog()">Nuevo</button>
+    </div>
+
+    <div class="main__search">
+
+        <mat-form-field class="w-100">
+            <mat-label>Buscar</mat-label>
+            <input type="email" matInput placeholder="Buscar" #search>
+            <mat-icon matSuffix>search</mat-icon>
+
+        </mat-form-field>
+
+    </div>
+
+    <div class="main__content">
+
+        <div class="card">
+
+            <div class="card__item" *ngFor="let person of persons | filterPersonas:search.value">
+
+                <div class="card__picture">
+
+                    <img [src]="person.foto" alt="Perfil" class="card__img">
+
+                </div>
+
+                <div class="text-center mt-2">
+                    <h3>{{person.nombres}} {{person.apellido_paterno}}</h3>
+                </div>
+
+                <div class="text-center mt-2">
+                    <p>{{person.edad}}</p>
+                </div>
+
+                <div class="text-center mt-2">
+                    <p>{{person.grado['desc_grado']}} {{person.grado['nivel']}}</p>
+                </div>
+
+
+                <div class="mt-2 d-flex justify-content-center">
+
+                    <button mat-raised-button color="warn" (click)="onRemovePerson(person._id)">
+                        Borrar
+                        <mat-icon>delete</mat-icon>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

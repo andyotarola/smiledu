@@ -1,0 +1,141 @@
+<div class="form-main">
+
+    <form [formGroup]="personForm" (ngSubmit)="onCreate()" >
+
+
+        <div mat-dialog-title>
+            <div class="d-flex justify-content-between">
+                <h2 class="m-0 align-self-center">Nuevo Estudiante</h2>
+    
+                <button mat-icon-button type="button" mat-dialog-close>
+                    <mat-icon>clear</mat-icon>
+                </button>
+            </div>
+    
+        </div>
+    
+        <div mat-dialog-content>
+            
+            <div class="d-flex mb-2">
+                <mat-form-field class="mr-5">
+                    <mat-label>Nombres</mat-label>
+    
+                    <mat-error *ngIf="personForm.controls.nombres.hasError('required')">
+                        El campo de nombres es requerido.
+                    </mat-error>
+
+                    <input 
+                        type="email" 
+                        matInput 
+                        placeholder="Nombres" 
+                        formControlName="nombres" 
+                        name="nombres"
+                    >
+                    
+                </mat-form-field>
+        
+                <mat-form-field class="example-full-width">
+                    <mat-label>Apellido Paterno</mat-label>
+    
+                    <mat-error *ngIf="personForm.controls.apellido_paterno.hasError('required')">
+                        El apellido paterno es requerido
+                    </mat-error>
+
+                    <input 
+                        type="email" 
+                        matInput 
+                        placeholder="Apellido Paterno" 
+                        formControlName="apellido_paterno" 
+                        name="apellido_paterno"
+                    >
+                    
+                </mat-form-field>
+    
+            </div>
+    
+            <div class="d-flex mb-2">
+                <mat-form-field class="mr-5">
+                    <mat-label>Apellido Materno</mat-label>
+                    
+                    <mat-error *ngIf="personForm.controls.apellido_materno.hasError('required')">
+                        El apellido materno es requerido
+                    </mat-error>
+
+                    <input 
+                        type="email" 
+                        matInput 
+                        placeholder="apellido_materno"
+                        formControlName="apellido_materno"
+                        name="apellido_materno"
+                    >
+                    
+                </mat-form-field>
+        
+                <mat-form-field>
+                    <mat-label>Grado</mat-label>
+                    <mat-select [(value)]="selectedGrade" formControlName="select">
+                      <mat-option *ngFor="let grade of grades" [value]="grade._id">
+                        {{grade.desc_grado}} - {{grade.nivel}}
+                      </mat-option>
+                    </mat-select>
+
+                    <mat-error *ngIf="personForm.controls.select.hasError('required')">
+                        Debe escojer un grado
+                    </mat-error>
+
+                </mat-form-field>
+    
+            </div>
+    
+            <div class="d-flex mb-2">
+                <mat-form-field appearance="fill" class="mr-5">
+                    <mat-label>Nacimiento</mat-label>
+    
+                    <mat-error *ngIf="personForm.controls.nacimiento.hasError('required')">
+                        La fecha de nacimiento es requerida
+                    </mat-error>
+
+                    <input 
+                        matInput 
+                        [matDatepicker]="picker" 
+                        [min]="minDate" 
+                        [max]="maxDate" 
+                        formControlName="nacimiento"
+                        (dateChange)="onSelectDate()"
+                    >
+    
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+    
+                </mat-form-field>
+    
+                <mat-form-field class="example-full-width">
+                    <mat-label>Edad</mat-label>
+                    <input matInput disabled value="año(s) mes(es)" #edad>
+                </mat-form-field>
+    
+            </div>
+    
+            <div class="mb-4">
+    
+                <input type="file" accept="image/*" (change)="onChange($event)" class="mb-4">
+    
+                <mat-error *ngIf="personForm.controls.foto.hasError('required')">
+                    La foto es requerida
+                </mat-error>
+
+                <div class="d-flex justify-content-center">
+                    <img [src]="preview" alt="Estudiante" *ngIf="showPreview" class="form-main__img">
+                </div>
+    
+            </div>
+    
+            <div class="d-flex justify-content-end">
+                <button mat-raised-button color="primary" type="submit">Agregar</button>
+            </div>
+    
+        </div>
+    
+    </form>
+
+</div>
