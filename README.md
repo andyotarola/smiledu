@@ -1,5 +1,9 @@
 # Smiledu
 
+## Iniciar servidor backend
+
+npm run dev
+
 ## Observaciones
 
 ### Matrícula
