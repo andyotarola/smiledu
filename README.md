@@ -1,5 +1,13 @@
 # Smiledu
 
+## Observaciones
+
+### Matrícula
+El monto de la matrícula que le se puse, fue igual al monto de la pensión, que depende del grado.
+
+### Fecha de vencimiento
+La fecha de vencimiento de las pensiones, puse que fueran el primer día de cada mes.
+
 ## Datos para las tablas
 
 ### Cronograma
@@ -130,11 +138,3 @@ db.detallecrogramas.insertMany([
     }
 ])
 ```
-
-## Observaciones
-
-### Matrícula
-El monto de la matrícula que le se puse, fue igual al monto de la pensión, que depende del grado.
-
-### Fecha de vencimiento
-La fecha de vencimiento de las pensiones, puse que fueran el primer día de cada mes.
